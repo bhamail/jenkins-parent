@@ -8,6 +8,7 @@ Setup
 -----
 1. Change the pom.xml property *repoURLBase* to point to your repo root
 2. Edit your .m2/settings.xml, adding an entry with the userId and password required to access your protected repositories:
+
         <servers>
             <server>
                 <id>releasesId</id>
@@ -54,6 +55,6 @@ Setup
             </profile>
         </profiles>
 3. Deploy this parent pom to your repo via: mvn deploy
-        This will validate you configuration, as well as ensure the parent pom is available for use by project a and b.
+        This will validate your configuration, as well as ensure the parent pom is available in your repo for use by project a and b.
 4. After this project is deployed, you can setup two new jenkins jobs for project jenkins-a and jenkins-b (be sure to use
 "maven" jobs). Verify the projects can build individually.
