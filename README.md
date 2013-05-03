@@ -60,7 +60,12 @@ Setup
 "maven" jobs). Use maven goal: clean deploy. Verify the projects can build individually. After you have built both jobs in Jenkins, make sure project B
 appears as a "downstream" project from project A. Similarly, project A should appear as "upstream" when viewed from project B.
 Verify when you manually trigger a build of project A, that project B automatically builds also.
-5. To reproduce the permissions problem, run "mvn release" on project A. This will increment the version number of A (and publish a release version of a.jar).
+5. To reproduce the permissions problem, run on project A:
+
+        mvn release:prepare
+        mvn release:perform
+
+ This will increment the version number of A (and publish a release version of a.jar).
 For example, project A started at version 1.0-SNAPSHOT, was released as version 1.0, and is now at version 1.1-SNAPSHOT.
 (Note: Ensure no build of project A is triggered during the next steps, for example due to scm polling)
 
