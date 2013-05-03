@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>jenkins-parent</groupId>
+  <groupId>org.myorg</groupId>
   <artifactId>jenkins-parent</artifactId>
   <version>1.0-SNAPSHOT</version>
 
@@ -15,7 +15,27 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+      <!-- The machine hosting our maven repository.
+      @todo Change this to point to your repo root. Assumes you have two repos named: libs-releases-local, and libs-snapshots-local -->
+      <repoURLBase>http://yourdomain/yourrepohost</repoURLBase>
+
   </properties>
 
 
+    <!-- repos to which we write (during deploy). -->
+    <distributionManagement>
+        <repository>
+            <id>releasesId</id>
+            <name>My Release Repository</name>
+            <url>${repoURLBase}/libs-releases-local/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>snapshotsId</id>
+            <name>My Snapshot Repository</name>
+            <url>${repoURLBase}/libs-snapshots-local/</url>
+        </snapshotRepository>
+
+    </distributionManagement>
 </project>
