@@ -4,6 +4,7 @@
 
   <groupId>org.myorg</groupId>
   <artifactId>jenkins-parent</artifactId>
+  <!-- @todo  @todo Change this to version 1.0 and run 'mvn deploy' AFTER updating repoURLBase and settings.xml as per setup steps. -->
   <version>1.0-SNAPSHOT</version>
 
   <packaging>pom</packaging>
