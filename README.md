@@ -6,8 +6,9 @@ common parent of test jenkins app (a and b), defines distributionManagement info
 
 Setup
 -----
-1. Change the pom.xml property *repoURLBase* to point to your repo root
-2. Edit your .m2/settings.xml, adding an entry with the userId and password required to access your protected repositories:
+1. Change the jenkins-parent pom.xml version to: 1.0
+2. Change the jenkins-parent pom.xml property *repoURLBase* to point to your repo root.
+3. Edit your .m2/settings.xml, adding an entry with the userId and password required to access your protected repositories:
 
         <servers>
             <server>
@@ -54,13 +55,14 @@ Setup
                 </repositories>
             </profile>
         </profiles>
-3. Deploy this parent pom to your repo via: mvn deploy
+4. Deploy this parent pom to your repo via: mvn deploy
         This will validate your configuration, as well as ensure the parent pom is available in your repo for use by project A and B.
-4. After this project is deployed, you can setup two new jenkins jobs for project jenkins-a and jenkins-b (be sure to use
+        It is important that this be a 'release' version (not a SNAPSHOT version), otherwise the 'mvn release' of jenkins-a will fail.
+5. After this project is deployed, you can setup two new jenkins jobs for project jenkins-a and jenkins-b (be sure to use
 "maven" jobs). Use maven goal: clean deploy. Verify the projects can build individually. After you have built both jobs in Jenkins, make sure project B
 appears as a "downstream" project from project A. Similarly, project A should appear as "upstream" when viewed from project B.
 Verify when you manually trigger a build of project A, that project B automatically builds also.
-5. To reproduce the permissions problem, run on project A:
+6. To reproduce the permissions problem, run on project A:
 
         mvn release:prepare
         mvn release:perform
