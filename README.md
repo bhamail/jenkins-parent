@@ -55,8 +55,11 @@ Setup
                 </repositories>
             </profile>
         </profiles>
-4. Deploy this parent pom to your repo via: mvn deploy
-        This will validate your configuration, as well as ensure the parent pom is available in your repo for use by project A and B.
+4. Deploy this jenkins-parent pom to your repo via:
+
+        mvn deploy
+
+   This will validate your configuration, as well as ensure the parent pom is available in your repo for use by project A and B.
         It is important that this be a 'release' version (not a SNAPSHOT version), otherwise the 'mvn release' of jenkins-a will fail.
 5. After this project is deployed, you can setup two new jenkins jobs for project jenkins-a and jenkins-b (be sure to use
 "maven" jobs). Use maven goal: clean deploy. Verify the projects can build individually. After you have built both jobs in Jenkins, make sure project B
